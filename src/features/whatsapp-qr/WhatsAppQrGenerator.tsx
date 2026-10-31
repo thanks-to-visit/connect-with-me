@@ -302,18 +302,6 @@ export const WhatsAppQrGenerator: React.FC<WhatsAppQrGeneratorProps> = ({ onNavi
             This tool is independent and not affiliated with, authorized, maintained, sponsored, or endorsed by WhatsApp Inc. or Meta Platforms, Inc.
           </p>
 
-          <div className="flex items-center gap-3 text-xs text-slate-400">
-            {onNavigate && (
-              <button
-                type="button"
-                onClick={() => onNavigate('/404')}
-                className="hover:text-slate-600 underline underline-offset-2 transition-colors cursor-pointer"
-              >
-                Preview 404 Page
-              </button>
-            )}
-          </div>
-
           <div className="text-xs text-slate-500 pt-2 border-t border-slate-100 w-full max-w-sm">
             &copy; {new Date().getFullYear()} WhatsApp QR Generator. All rights reserved.
           </div>

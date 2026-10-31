@@ -9,7 +9,6 @@ import {
   ExternalLink,
   MessageCircle,
   Home,
-  AlertTriangle,
   ShieldCheck,
 } from 'lucide-react';
 import { copyText } from '../lib/clipboard';
@@ -291,18 +290,6 @@ export const ShareMenuDrawer: React.FC<ShareMenuDrawerProps> = ({
               >
                 <Home className="w-4 h-4 text-emerald-600" />
                 <span>QR Generator Home</span>
-              </button>
-
-              <button
-                type="button"
-                onClick={() => {
-                  onNavigate('/404');
-                  onClose();
-                }}
-                className="flex items-center gap-2.5 px-3 py-2 rounded-lg text-sm font-medium text-slate-700 hover:bg-slate-100 transition-colors text-left cursor-pointer"
-              >
-                <AlertTriangle className="w-4 h-4 text-amber-600" />
-                <span>404 Error Page Preview</span>
               </button>
             </div>
           )}
