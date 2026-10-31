@@ -8,9 +8,14 @@ import { useToast } from './components/ToastContext';
 import { validatePhoneNumber, formatDisplayPhoneNumber, extractDigits } from './lib/phone';
 import { buildWhatsAppUrl } from './lib/whatsappUrl';
 import { generateQrDataUrl } from './lib/qr';
-import { QrCode, Sparkles, Loader2, ShieldCheck, Zap } from 'lucide-react';
+import { QrCode, Sparkles, Loader2, ShieldCheck, Zap, Menu } from 'lucide-react';
+import { ShareMenuDrawer } from './components/ShareMenuDrawer';
 
-export const WhatsAppQrGenerator: React.FC = () => {
+interface WhatsAppQrGeneratorProps {
+  onNavigate?: (path: string) => void;
+}
+
+export const WhatsAppQrGenerator: React.FC<WhatsAppQrGeneratorProps> = ({ onNavigate }) => {
   const { showToast } = useToast();
 
   // Form State
@@ -25,6 +30,9 @@ export const WhatsAppQrGenerator: React.FC = () => {
 
   // Snapshot of generated payload (guarantees Download/Copy uses the exact snapshot)
   const [snapshot, setSnapshot] = useState<QrSnapshot | null>(null);
+
+  // Hamburger / Share Drawer state
+  const [isShareMenuOpen, setIsShareMenuOpen] = useState<boolean>(false);
 
   // Reference for generation request sequencing to prevent race conditions
   const generationIdRef = useRef(0);
@@ -159,11 +167,23 @@ export const WhatsAppQrGenerator: React.FC = () => {
             </div>
           </div>
 
-          <div className="flex items-center gap-2">
-            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-800 border border-emerald-200">
+          <div className="flex items-center gap-2.5">
+            <span className="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-800 border border-emerald-200">
               <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
               <span>100% Client-Side</span>
             </span>
+
+            {/* Hamburger / Share Menu Button */}
+            <button
+              type="button"
+              onClick={() => setIsShareMenuOpen(true)}
+              aria-label="Open menu and share app"
+              aria-expanded={isShareMenuOpen}
+              className="flex items-center gap-2 h-10 px-3 sm:px-3.5 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 text-slate-800 text-xs sm:text-sm font-semibold shadow-xs transition-colors focus:outline-none focus:ring-2 focus:ring-emerald-600 cursor-pointer"
+            >
+              <Menu className="w-4 h-4 text-slate-700" />
+              <span className="hidden xs:inline">Share App</span>
+            </button>
           </div>
         </div>
       </header>
@@ -274,11 +294,30 @@ export const WhatsAppQrGenerator: React.FC = () => {
             This tool is independent and not affiliated with, authorized, maintained, sponsored, or endorsed by WhatsApp Inc. or Meta Platforms, Inc.
           </p>
 
+          <div className="flex items-center gap-3 text-xs text-slate-400">
+            {onNavigate && (
+              <button
+                type="button"
+                onClick={() => onNavigate('/404')}
+                className="hover:text-slate-600 underline underline-offset-2 transition-colors cursor-pointer"
+              >
+                Preview 404 Page
+              </button>
+            )}
+          </div>
+
           <div className="text-xs text-slate-500 pt-2 border-t border-slate-100 w-full max-w-sm">
             &copy; {new Date().getFullYear()} WhatsApp QR Generator. All rights reserved.
           </div>
         </div>
       </footer>
+
+      {/* Share / Hamburger Menu Drawer */}
+      <ShareMenuDrawer
+        isOpen={isShareMenuOpen}
+        onClose={() => setIsShareMenuOpen(false)}
+        onNavigate={onNavigate}
+      />
     </div>
   );
 };
