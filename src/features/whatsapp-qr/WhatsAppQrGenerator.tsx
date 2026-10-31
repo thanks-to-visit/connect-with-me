@@ -11,6 +11,7 @@ import { generateQrDataUrl } from './lib/qr';
 import { QrCode, Sparkles, Loader2, ShieldCheck, Zap, Menu } from 'lucide-react';
 import { ShareMenuDrawer } from './components/ShareMenuDrawer';
 import { HowToUseSection } from './components/HowToUseSection';
+import { FaqSection } from './components/FaqSection';
 
 interface WhatsAppQrGeneratorProps {
   onNavigate?: (path: string) => void;
@@ -277,6 +278,9 @@ export const WhatsAppQrGenerator: React.FC<WhatsAppQrGeneratorProps> = ({ onNavi
 
       {/* How to Use Section */}
       <HowToUseSection />
+
+      {/* Frequently Asked Questions */}
+      <FaqSection />
 
       {/* Footer */}
       <footer className="mt-auto border-t border-slate-200/80 bg-white py-8">
