@@ -8,7 +8,18 @@ import { useToast } from './components/ToastContext';
 import { validatePhoneNumber, formatDisplayPhoneNumber, extractDigits } from './lib/phone';
 import { buildWhatsAppUrl } from './lib/whatsappUrl';
 import { generateQrDataUrl } from './lib/qr';
-import { QrCode, Sparkles, Loader2, ShieldCheck, Zap, Menu } from 'lucide-react';
+import {
+  QrCode,
+  Sparkles,
+  Loader2,
+  ShieldCheck,
+  Zap,
+  Menu,
+  Github,
+  Linkedin,
+  Globe,
+  Mail,
+} from 'lucide-react';
 import { ShareMenuDrawer } from './components/ShareMenuDrawer';
 import { HowToUseSection } from './components/HowToUseSection';
 import { FaqSection } from './components/FaqSection';
@@ -283,16 +294,60 @@ export const WhatsAppQrGenerator: React.FC<WhatsAppQrGeneratorProps> = ({ onNavi
       <FaqSection />
 
       {/* Footer */}
-      <footer className="mt-auto border-t border-slate-200/80 bg-white py-8">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col items-center text-center gap-3">
-          <div className="flex items-center gap-2 text-slate-900 font-bold text-sm">
-            <QrCode className="w-4 h-4 text-emerald-600" />
+      <footer className="mt-auto border-t border-slate-200/80 bg-white py-10">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col items-center text-center gap-5">
+          {/* Brand */}
+          <div className="flex items-center gap-2 text-slate-900 font-bold text-base">
+            <div className="w-7 h-7 rounded-lg bg-emerald-600 flex items-center justify-center text-white">
+              <QrCode className="w-4 h-4 stroke-[2.2]" />
+            </div>
             <span>WhatsApp QR Generator</span>
           </div>
 
-          <p className="text-xs text-slate-600 max-w-xl">
+          <p className="text-xs sm:text-sm text-slate-600 max-w-xl">
             Create and share QR codes that make starting WhatsApp conversations effortless.
           </p>
+
+          {/* Social & Contact Links */}
+          <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3">
+            <a
+              href="https://github.com/thanks-to-visit/connect-with-me"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold text-slate-700 bg-slate-50 hover:bg-slate-100 hover:text-slate-950 border border-slate-200 transition-colors"
+            >
+              <Github className="w-3.5 h-3.5" />
+              <span>GitHub</span>
+            </a>
+
+            <a
+              href="https://linkedin.com/in/gitanuj993"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold text-slate-700 bg-slate-50 hover:bg-slate-100 hover:text-slate-950 border border-slate-200 transition-colors"
+            >
+              <Linkedin className="w-3.5 h-3.5 text-[#0A66C2]" />
+              <span>LinkedIn</span>
+            </a>
+
+            <a
+              href="https://anuj-tanwar.me"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold text-slate-700 bg-slate-50 hover:bg-slate-100 hover:text-slate-950 border border-slate-200 transition-colors"
+            >
+              <Globe className="w-3.5 h-3.5 text-emerald-600" />
+              <span>Website</span>
+            </a>
+
+            <a
+              href="mailto:anujtawar42@gmail.com"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold text-slate-700 bg-slate-50 hover:bg-slate-100 hover:text-slate-950 border border-slate-200 transition-colors"
+            >
+              <Mail className="w-3.5 h-3.5 text-amber-600" />
+              <span>Email</span>
+            </a>
+          </div>
 
           <p className="text-xs text-slate-500 max-w-xl">
             Your phone number and message are processed locally in your browser. We do not store your information.
@@ -302,8 +357,14 @@ export const WhatsAppQrGenerator: React.FC<WhatsAppQrGeneratorProps> = ({ onNavi
             This tool is independent and not affiliated with, authorized, maintained, sponsored, or endorsed by WhatsApp Inc. or Meta Platforms, Inc.
           </p>
 
-          <div className="text-xs text-slate-500 pt-2 border-t border-slate-100 w-full max-w-sm">
-            &copy; {new Date().getFullYear()} WhatsApp QR Generator. All rights reserved.
+          {/* Bottom Copyright & Made with in India */}
+          <div className="pt-4 border-t border-slate-100 w-full max-w-md flex flex-col items-center gap-1.5 text-xs text-slate-500">
+            <span className="font-medium text-slate-600">
+              Made with 🧡 in India
+            </span>
+            <span>
+              &copy; 2026 Anuj Tanwar. All rights reserved.
+            </span>
           </div>
         </div>
       </footer>

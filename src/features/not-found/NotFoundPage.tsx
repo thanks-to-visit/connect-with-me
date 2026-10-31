@@ -117,8 +117,9 @@ export const NotFoundPage: React.FC<NotFoundPageProps> = ({ onGoHome }) => {
 
       {/* Footer */}
       <footer className="border-t border-slate-200/80 bg-white py-6">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 text-center text-xs text-slate-500">
-          &copy; {new Date().getFullYear()} WhatsApp QR Generator • All rights reserved
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col items-center gap-1.5 text-center text-xs text-slate-500">
+          <span className="font-medium text-slate-600">Made with 🧡 in India</span>
+          <span>&copy; 2026 Anuj Tanwar. All rights reserved.</span>
         </div>
       </footer>
 
