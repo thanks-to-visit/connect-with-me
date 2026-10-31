@@ -1,0 +1,6 @@
+{
+  "name": "WhatsApp QR Code Generator",
+  "description": "Create and share high-resolution QR codes that make starting WhatsApp conversations effortless.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
